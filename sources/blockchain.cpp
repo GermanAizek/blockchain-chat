@@ -10,7 +10,7 @@ size_t Blockchain::newTransaction(std::string sender, std::string recipient, siz
 	return this->getLastBlock() + 1;
 }
 
-bool Blockchain::newBlock(size_t proof, auto previousHash = nullptr)
+Block Blockchain::newBlock(size_t proof, size_t previousHash)
 {
 	Block block;
 
@@ -22,7 +22,7 @@ bool Blockchain::newBlock(size_t proof, auto previousHash = nullptr)
 	return block;
 }
 
-bool Blockchain::hash(auto block)
+bool Blockchain::hash(Block block)
 {
 
 

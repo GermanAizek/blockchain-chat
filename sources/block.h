@@ -1,15 +1,16 @@
 #include <ctime>
-#include "blockchain.h"
+//#include "blockchain.h"
 
 class Block : private Blockchain
 {
 	size_t index;
-	std::time timestamp;
-	std::vector<std::multimap<std::pair<std::string, std::string>, size_t>> transactions;
+	time_t timestamp;
+	std::vector<std::multimap<std::pair<std::string, std::string>, size_t>> transactions; // = currentTransactions;
 	size_t proof;
-	auto previousHash;
+	size_t previousHash;
+public:
 
-	Block() : transactions(currentTransactions)
+	Block() : transactions()
 	{
 
 	}
