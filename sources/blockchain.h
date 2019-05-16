@@ -1,3 +1,6 @@
+#include <vector>
+#include <map>
+
 class Blockchain
 {
 private:

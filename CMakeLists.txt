@@ -2,5 +2,4 @@
 
 project ("blockchain-chat")
 
-add_subdirectory ("blockchain-chat")
-add_subdirectory ("classes")
+add_subdirectory ("sources")
