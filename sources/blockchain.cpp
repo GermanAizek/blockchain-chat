@@ -15,21 +15,21 @@ Block Blockchain::newBlock(size_t proof, size_t previousHash)
 	Block block;
 
 	// reset list transactions
-	currentTransactions = nullptr;
+	currentTransactions.clear();
 
 	chain.push_back(block);
 
 	return block;
 }
 
-bool Blockchain::hash(Block block)
+auto Blockchain::hash(Block block)
 {
 
 
 	return;
 }
 
-auto Blockchain::getLastBlock()
+Block Blockchain::getLastBlock()
 {
 	return chain.back();
 }
