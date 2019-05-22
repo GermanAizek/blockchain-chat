@@ -1,11 +1,17 @@
 //#include "block.h"
 #include <vector>
 #include <map>
+#include <sstream>
+#include <iomanip>
+//#include "openssl/evp.h"
+#include "openssl/sha.h"
 
-// std::string sender
-// std::string recipient
-// size_t amount
-using DataTransaction = std::multimap<std::pair<std::string, std::string>, size_t>;
+struct DataTransaction
+{
+	std::string sender;
+	std::string recipient;
+	size_t amount;
+};
 
 class Blockchain
 {
@@ -24,10 +30,10 @@ public:
 		return chain;
 	}
 
-	size_t newTransaction(std::string sender, std::string recipient, size_t amount);
-	Block newBlock(size_t proof, size_t previousHash);
+	size_t newTransaction(DataTransaction data);
+	Block newBlock(size_t proof, std::string previousHash);
 
-	auto hash(Block block);
+	std::string Blockchain::hash(const std::string str);
 	Block getLastBlock();
 
 	Blockchain() { }

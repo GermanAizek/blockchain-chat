@@ -1,15 +1,17 @@
 #include <ctime>
 #include <vector>
 #include <map>
+#include "openssl/evp.h"
 //#include "blockchain.h"
 
 class Block : private Blockchain
 {
 	size_t index;
 	std::string timestamp;
-	std::vector<std::multimap<std::pair<std::string, std::string>, size_t>> transactions; // = currentTransactions;
+	std::vector<DataTransaction> transactions;
 	size_t proof;
-	auto previousHash;
+	std::string previousHash;
+
 public:
 
 	void setProof(size_t proofWork)
@@ -17,9 +19,15 @@ public:
 		proof = std::move(proofWork);
 	}
 
-	void setPreviousHash(auto previousHashBlock)
+	void setPreviousHash(std::string previousHashBlock)
 	{
-		previousHash = std::move(previousHashBlock) || hash(getChain().back());
+		// TODO: prevHash
+		previousHash = std::move(previousHashBlock) || hash(getChain().back().previousHash);
+	}
+
+	size_t getIndex()
+	{
+		return index;
 	}
 
 	Block() : transactions(getCurrentTransactions()), index(getChain().size() + 1)
