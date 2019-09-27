@@ -1,5 +1,5 @@
 #include "blockchain.h"
-#include "block.h"
+#include "Classes/block.h"
 
 size_t Blockchain::newTransaction(DataTransaction data)
 {
