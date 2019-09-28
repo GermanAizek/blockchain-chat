@@ -1,6 +1,11 @@
 #include "blockchain.h"
 #include "Classes/block.h"
 
+Blockchain::Blockchain()
+{
+
+}
+
 size_t Blockchain::newTransaction(DataTransaction data)
 {
 	currentTransactions.push_back(data);
@@ -20,7 +25,7 @@ Block Blockchain::newBlock(size_t proof, std::string previousHash)
 	return block;
 }
 
-std::string Blockchain::hash(const std::string str)
+std::string Blockchain::getHash(const std::string str)
 {
 	unsigned char hash[SHA256_DIGEST_LENGTH];
 	SHA256_CTX sha256;
@@ -40,4 +45,14 @@ std::string Blockchain::hash(const std::string str)
 Block Blockchain::getLastBlock()
 {
 	return chain.back();
+}
+
+std::vector<Block>& Blockchain::getChain()
+{
+	return chain;
+}
+
+std::vector<DataTransaction>& Blockchain::getCurrentTransactions()
+{
+	return currentTransactions;
 }

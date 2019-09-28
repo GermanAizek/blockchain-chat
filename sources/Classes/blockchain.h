@@ -20,22 +20,13 @@ private:
 	std::vector<DataTransaction> currentTransactions;
 
 public:
-	std::vector<DataTransaction>& getCurrentTransactions()
-	{
-		return currentTransactions;
-	}
-
-	std::vector<Block>& getChain()
-	{
-		return chain;
-	}
+	Blockchain() { }
 
 	size_t newTransaction(DataTransaction data);
 	Block newBlock(size_t proof, std::string previousHash);
 
-	std::string Blockchain::hash(const std::string str);
+	std::string Blockchain::getHash(const std::string str);
 	Block getLastBlock();
-
-	Blockchain() { }
-	~Blockchain() { }
+	std::vector<Block>& getChain();
+	std::vector<DataTransaction>& getCurrentTransactions();
 };
